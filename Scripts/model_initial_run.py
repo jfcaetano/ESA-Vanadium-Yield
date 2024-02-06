@@ -109,17 +109,17 @@ def run_model():
     # Make predictions and evaluate the model on the filtered test set
     y_test_fitted_filtered = model.predict(X_test_filtered)
     y_train_fitted = model.predict(X_train)
-    Score_train = model.score(X_train, y_train)
-    Score_test_filtered = model.score(X_test_filtered, y_test_filtered)
-    rsq_train = np.corrcoef(y_train, y_train_fitted)[0, 1] ** 2
-    rsq_test = np.corrcoef(y_test_filtered, y_test_fitted_filtered)[0, 1] ** 2
+    rsq_train = model.score(X_train, y_train)
+    rsq_test_filtered = model.score(X_test_filtered, y_test_filtered)
+    Score_train = np.corrcoef(y_train, y_train_fitted)[0, 1] ** 2
+    Score_test = np.corrcoef(y_test_filtered, y_test_fitted_filtered)[0, 1] ** 2
     MSE_filtered = np.square(np.subtract(y_test_filtered, y_test_fitted_filtered)).mean()
     RMSE_filtered = math.sqrt(MSE_filtered)
     cv = RepeatedKFold(n_splits=2, n_repeats=3, random_state=47)
     n_scores = cross_val_score(model, X_test_filtered, y_test_filtered, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1, error_score='raise')
     STD=std(n_scores)
     MAE=mean_absolute_error(y_test_filtered, y_test_fitted_filtered)
-    return MAE, Score_test_filtered, Score_train, rsq_test, rsq_train, RMSE_filtered, STD, len(X_train), len(X_test_filtered), feature_importance_df
+    return MAE, rsq_test_filtered, rsq_train, Score_test, Score_train, RMSE_filtered, STD, len(X_train), len(X_test_filtered), feature_importance_df
 
 # Run the model 10 times and store results
 results = []

@@ -175,3 +175,25 @@ for i in range(10):
 columns = ['Iteration', 'MAE', 'Score_Test', 'Score_Train', "R2test", "R2train", "RMSE", "STD", 'Train_Size', 'Test_Size']
 results_df = pd.DataFrame(results, columns=columns)
 results_df.to_csv('model_results.csv', index=False)
+
+
+
+### Pipeline
+# Calcualte best hyperparameters
+
+steps = [('scaler', StandardScaler()), ('Forest', RandomForestRegressor())]
+pipeline = Pipeline(steps)
+
+parameters = {'Forest__n_estimators': [100, 150, 200, 250],
+              'Forest__max_features': ['sqrt','log2'],
+              'Forest__min_samples_split': [2, 5, 10],
+              'Forest__min_samples_leaf': [1, 2, 5, 10],
+              'Forest__max_depth': [10, 15, 20, 25, 30, 35, 40, 45, 50],
+              'Forest__bootstrap': [True, False],
+              'Forest__warm_start': [True, False]}
+
+model = RandomizedSearchCV(pipeline, parameters, n_iter=10, scoring='neg_mean_absolute_error', cv=10)
+
+model.fit(X_train, y_train)
+Best_Parameters = model.best_params_
+Best_Parameters

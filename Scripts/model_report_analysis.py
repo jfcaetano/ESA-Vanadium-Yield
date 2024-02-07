@@ -79,3 +79,29 @@ df_features['Family'].fillna('Other', inplace=True)
 
 # Export the updated DataFrame to CSV
 df_features.to_csv('updated_list.csv', index=False)
+
+
+
+#######
+## Calculate Positive Average PI Contribution
+
+import pandas as pd
+
+# Example DataFrame loading
+df = pd.read_csv('GB Feature Importance Optimized.csv')
+
+df_filtered = df[df['Importance / %'] > 0]
+
+# Group by 'Type1' and calculate the mean of 'Importance / %' for each group
+average_importance = df_filtered.groupby('Type1')['Importance / %'].mean()
+
+# Normalize the average importance values so that they sum up to 100
+total_sum = average_importance.sum()
+normalized_average_importance = (average_importance / total_sum) * 100
+
+# Convert to DataFrame
+normalized_average_importance_df = normalized_average_importance.reset_index()
+normalized_average_importance_df.columns = ['Type1', 'Normalized Average Importance / %']
+
+# Export to CSV
+normalized_average_importance_df.to_csv('normalized_type1_average_importance.csv', index=False)

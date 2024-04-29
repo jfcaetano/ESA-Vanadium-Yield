@@ -1,5 +1,4 @@
 ### Mol Conversion
-### JFCAETANO 2023
 ### MIT Licence
 
 import rdkit, sys, time, csv, math

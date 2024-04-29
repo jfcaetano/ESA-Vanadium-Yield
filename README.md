@@ -1,8 +1,23 @@
 # ESA-Vanadium-Yield
 Repository for the article "Feature Engineered, Machine Learning Models for Explainable Yield Prediction in Vanadium-Catalyzed Epoxidation of Small Alkenes and Allylic Alcohols"
 
-# Authorship
-Code was written by José Ferraz-Caetano, under the supervision of Filipe Teixeira and Natália Cordeiro.
+Database/
 
-# Acknowledgements
-This code was developed at the Univerisity of Porto and was supported by the "Fundação para a Ciência e Tecnologia" (FCT/MCTES) to LAQV-REQUIMTE Lab (UIDP/50006/2020). JFC’s PhD Fellowship is supported by the doctoral Grant (SFRH/BD/151159/2021) financed by FCT, with funds from the Portuguese State and EU Budget through the Social European Fund and Programa Por_Centro, under the MIT Portugal Program.
+ESA-Vanadium-Database-v1.csv: Complete dataset with descriptor calculations
+
+Group-Lists.csv: Descriptor group lists
+
+Scripts/
+
+mol-conversion.py: Calculation of desired RdKit descriptors using the raw database
+
+model_initial_run.py: Model calculations using desired algorithms with all calculated descriptors
+
+model_report_analysis.py: Model performance and report analysis
+
+model_feature_eng_run.py: Calculation of engineered features
+
+
+Results/
+
+ESA-Model-Full-Results.xlsx: File including all model results presented in the paper (including permuation importance, model statistical performance and descriptors group performance determinations)

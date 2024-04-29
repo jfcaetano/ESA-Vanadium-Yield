@@ -1,5 +1,4 @@
 ### ESA Yield Prediction
-### JFCAETANO 2024
 ### MIT Licence
 
 import sys, time, csv, math

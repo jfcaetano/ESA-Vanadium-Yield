@@ -111,7 +111,6 @@ This sheet provides an analysis of **feature importance** for the optimized mode
 - **Type**: The type of feature, such as whether it's a molecular descriptor, reaction condition, or another variable.
 - **Source**: The origin of the feature, indicating whether it comes from the catalyst, ligand, experimental data, etc.
 - **VO(acac)2, VO(OiPr)3, VCl2(salen), VO(salen), VOSO4**: These columns represent the **feature importance scores** for each feature as they relate to the specific catalyst types. The scores indicate how influential each feature is for the model’s predictions for each particular catalyst.
-- 
 - **All**: This column shows the **overall feature importance** across all catalysts, combining the importance scores into a general metric to represent the feature’s contribution to the model’s performance for the entire dataset.
 
 ---

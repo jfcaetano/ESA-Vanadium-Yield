@@ -48,24 +48,71 @@ This script generates **partial dependence plots (PDPs)** to interpret the behav
 
 ---
 
+# ESA Vanadium Database Folder Overview
 
-Database/
+This folder contains files used for the development and analysis of machine learning models for predicting outcomes of epoxidation reactions.
 
-ESA-Vanadium-Database-v1.csv: Complete dataset with descriptor calculations
+## Folder Contents
 
-Group-Lists.csv: Descriptor group lists
+### 1. **Mol Files Folder**
+The `Mol Files` folder contains molecular structure files in `.mol` format. These files represent the chemical structures of various catalysts, ligands, and substrates used in the epoxidation reactions. They serve as input for molecular descriptors that are converted into feature vectors for machine learning models.
 
-Scripts/
+### 2. **Augmented_ESA_Vanadium_Database.csv**
+This CSV file contains an **augmented version of the ESA Vanadium dataset**, which includes additional synthetic data points or transformations applied to the original dataset to enhance model performance. The augmentation process involves:
+- Expanding the feature space with additional descriptors.
+- Filling gaps in the dataset by generating plausible reaction conditions or molecular structures to enhance model robustness.
+- Ensuring the augmented data is chemically valid and consistent with real-world reaction conditions.
 
-mol-conversion.py: Calculation of desired RdKit descriptors using the raw database
+### 3. **ESA-Vanadium-Database-v1.csv**
+This CSV file represents the **first version of the ESA Vanadium dataset**, which includes the raw experimental data collected from various epoxidation reactions. The data primarily consists of:
+- Descriptors related to the catalysts, ligands, substrates, solvents, and reaction conditions.
+- Target variables like `Yield`, `Enantiomeric Excess (EE)`, and other outcome measures of the reaction.
 
-model_initial_run.py: Model calculations using desired algorithms with all calculated descriptors
+### 4. **ESA-Vanadium-Database-with-descriptors.csv**
+This file is an **enhanced version** of the original dataset (`ESA-Vanadium-Database-v1.csv`), where molecular descriptors for each component (catalyst, substrate, ligand) have been added. These descriptors are used as features for machine learning models and were likely generated from the `.mol` files in the `Mol Files` folder.
 
-model_report_analysis.py: Model performance and report analysis
+---
 
-model_feature_eng_run.py: Calculation of engineered features
+# Results Folder Overview
 
+The `Results` folder contains output file named ESA-Model-Aug-Full-Results.xlsx. The file amasses the outcomes of experiments conducted on the `ESA Vanadium Database` for predicting epoxidation reaction results such as yield and enantiomeric excess.
 
-Results/
+## File: `ESA-Model-Aug-Full-Results.xlsx`
 
-ESA-Model-Full-Results.xlsx: File including all model results presented in the paper (including permuation importance, model statistical performance and descriptors group performance determinations)
+This Excel file is structured into three key sheets:
+
+### 1. **Model Training Size Results**
+This sheet contains the results of model performance across varying training sizes, helping to evaluate how much training data is required for the models to perform effectively. It typically records performance metrics for different training sizes across multiple iterations of model training and testing.
+
+#### Key Columns:
+- **Training Size**: The proportion of the dataset used for training (e.g., 10%, 20%, 50%, 90%).
+- **Iteration**: The specific iteration or run number (e.g., 1 through 10).
+- **Model**: The type of machine learning model used (e.g., Random Forest, Gradient Boosting).
+- **Train R²**: R-squared value on the training set, indicating how well the model fits the training data for a given training size.
+- **Test R²**: R-squared value on the test set, measuring the model's performance on unseen data.
+- **Test MAE**: Mean absolute error on the test set, which reflects the average difference between predicted and actual values.
+- **Test RMSE**: Root mean squared error on the test set, a measure of prediction accuracy that accounts for large errors.
+
+### 2. **Opt Model Results - Cat Type**
+This sheet summarizes the **optimized model results** for different catalyst types (`Cat Type`) using the optimized RF algorithm. The models have been trained using the optimal hyperparameters identified through a search process (e.g., using `RandomizedSearchCV`), and the results are segmented by catalyst structure.
+
+#### Key Columns:
+- **Catalyst Type**: The specific catalyst structure used in the reaction (e.g., VO(acac)2, VOSO4).
+- **Train R²**: R-squared value on the training set for the optimized model.
+- **Test R²**: R-squared value on the test set, representing the model’s ability to generalize to unseen data for each catalyst type.
+- **Test MAE**: Mean absolute error on the test set for each catalyst type.
+- **Test RMSE**: Root mean squared error on the test set, reflecting the overall prediction error for each catalyst type.
+
+### 3. **Feature Importance Opt Model**
+This sheet provides an analysis of **feature importance** for the optimized models. Feature importance refers to the relative contribution of each feature (e.g., molecular descriptors, reaction conditions) to the model's predictions. The higher the importance score, the more significant that feature is in driving the model’s predictions.
+
+#### Key Columns:
+- **Feature**: The name of the feature or descriptor used in the model (e.g., molecular descriptors like molecular weight, bond count, or reaction conditions like temperature, solvent type).
+- **Type**: The type of feature, such as whether it's a molecular descriptor, reaction condition, or another variable.
+- **Source**: The origin of the feature, indicating whether it comes from the catalyst, ligand, experimental data, etc.
+- **VO(acac)2, VO(OiPr)3, VCl2(salen), VO(salen), VOSO4**: These columns represent the **feature importance scores** for each feature as they relate to the specific catalyst types. The scores indicate how influential each feature is for the model’s predictions for each particular catalyst.
+- 
+- **All**: This column shows the **overall feature importance** across all catalysts, combining the importance scores into a general metric to represent the feature’s contribution to the model’s performance for the entire dataset.
+
+---
+

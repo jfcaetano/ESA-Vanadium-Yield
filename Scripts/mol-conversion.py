@@ -9,8 +9,8 @@ import numpy as np
 
 
 # Setup dataframe
-data_filename = 'Database_0.csv'
-output_fn = 'Database_1.csv'
+data_filename = 'ESA-Vanadium-Database-v1.csv'
+output_fn = 'ESA-Vanadium-Database-v1-OUT.csv'
 
 my_descriptors = list()
 for desc_name in dir(Descriptors):

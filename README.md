@@ -62,7 +62,7 @@ This CSV file contains an **augmented version of the ESA Vanadium dataset**, whi
 ### 3. **ESA-Vanadium-Database-v1.csv**
 This CSV file represents the **first version of the ESA Vanadium dataset**, which includes the raw experimental data collected from various epoxidation reactions. The data primarily consists of:
 - Descriptors related to the catalysts, ligands, substrates, solvents, and reaction conditions.
-- Target variables like `Yield`, `Enantiomeric Excess (EE)`, and other outcome measures of the reaction.
+- Target variables like `Yield`, and other outcome measures of the reaction.
 
 ### 4. **ESA-Vanadium-Database-with-descriptors.csv**
 This file is an **enhanced version** of the original dataset (`ESA-Vanadium-Database-v1.csv`), where molecular descriptors for each component (catalyst, substrate, ligand) have been added. These descriptors are used as features for machine learning models and were likely generated from the `.mol` files in the `Mol Files` folder.
@@ -71,7 +71,7 @@ This file is an **enhanced version** of the original dataset (`ESA-Vanadium-Data
 
 # Results Folder Overview
 
-The `Results` folder contains output file named ESA-Model-Aug-Full-Results.xlsx. The file amasses the outcomes of experiments conducted on the `ESA Vanadium Database` for predicting epoxidation reaction results such as yield and enantiomeric excess.
+The `Results` folder contains output file named ESA-Model-Aug-Full-Results.xlsx. The file amasses the outcomes of experiments conducted on the `ESA Vanadium Database` for predicting epoxidation reaction results such as reaction yield
 
 ## File: `ESA-Model-Aug-Full-Results.xlsx`
 

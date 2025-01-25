@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.inspection import PartialDependenceDisplay
 import matplotlib.pyplot as plt
 import seaborn as sns
-from matplotlib.lines import Line2D  # Import Line2D for custom legend handles
+from matplotlib.lines import Line2D  # Import Line2D for custom legend handles.
 
 # Set a global style using seaborn
 sns.set(style="whitegrid", palette="Paired")

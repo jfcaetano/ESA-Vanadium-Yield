@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 
-# Setup dataframe
+# Setup dataframe.
 data_filename = 'ESA-Vanadium-Database-v1.csv'
 output_fn = 'ESA-Vanadium-Database-v1-OUT.csv'
 

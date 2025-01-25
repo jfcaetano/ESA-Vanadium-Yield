@@ -50,7 +50,7 @@ def run_experiment(train, test, iteration, cat_structure='All'):
     weights = np.where(train['is_synthetic'] == 1, 0.5, 1.0)
 
     # Initialize model for 'Yield' regression task
-    model_ycr = RandomForestRegressor(n_estimators=350, max_depth=40, random_state=47)
+    model_ycr = RandomForestRegressor(n_estimators= 150, min_samples_split= 3, min_samples_leaf= 1, max_features='sqrt', max_depth=None, bootstrap= False, random_state=47)
     model_ycr.fit(X_train_scaled, y_train_ycr, sample_weight=weights)
 
     # Evaluate the performance of 'Yield'

@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import warnings
 
-# Suppress warnings
+# Suppress warnings.
 warnings.filterwarnings('ignore')
 
 # Load the dataset

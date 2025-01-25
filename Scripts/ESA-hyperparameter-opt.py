@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from scipy.stats import randint
 import warnings
 
-# Suppress warnings
+# Suppress warnings.
 warnings.filterwarnings('ignore')
 
 # Load the dataset

@@ -49,13 +49,13 @@ This script generates **partial dependence plots (PDPs)** to interpret the behav
 The script records optimized RF model performance across 10 iterations with varying synthetic data weights. These weights, ranging from 0.1 to 0.9, adjust the contribution of synthetic reactions in the training data, simulating different levels of experimental noise.
 
 ### 8. 'top_15_fi_RF.py'
-Script to run the optimized RF model ussing the top 15 features based on Feature Importance of model prediction using all catalysts.
+Script to run the optimized RF model using the top 15 features based on Feature Importance of model prediction using all catalysts.
 - Returns a csv with the model's predictions.
 
 ### 9. 'shap_analysis.py'
-Same framework of the **execution and evaluation** of the optimized RF machine learning model on the augmented ESA-Vanadium dataset, while also yielding the SHAP analysis for the "All Catalysts' case.
+Same framework of the **execution and evaluation** of the optimized RF machine learning model on the augmented ESA-Vanadium dataset, while also yielding the SHAP analysis for the "All Catalysts" case.
 - Returns a csv with the model's SHAP values.
-- Generates a SHAP plots that display feature influence in the finalmodel's predictions.
+- Generates a SHAP plot that displays feature influence in the final model's predictions.
 
 ---
 

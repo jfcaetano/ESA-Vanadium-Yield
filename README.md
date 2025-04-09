@@ -45,6 +45,15 @@ This script generates **partial dependence plots (PDPs)** to interpret the behav
 ### 7. 'weight_analysis.py'
 The script records optimized RF model performance across 10 iterations with varying synthetic data weights. These weights, ranging from 0.1 to 0.9, adjust the contribution of synthetic reactions in the training data, simulating different levels of experimental noise.
 
+### 8. 'top_15_fi_RF.py'
+Script to run the optimized RF model ussing the top 15 features based on Feature Importance of model prediction using all catalysts.
+- Returns a csv with the model's predictions.
+
+### 9. 'shap_analysis.py'
+Same framework of the **execution and evaluation** of the optimized RF machine learning model on the augmented ESA-Vanadium dataset, while also yielding the SHAP analysis for the "All Catalysts' case.
+- Returns a csv with the model's SHAP values.
+- Generates a SHAP plots that display feature influence in the finalmodel's predictions.
+
 ---
 
 # ESA Vanadium Database Folder Overview
@@ -81,7 +90,7 @@ The `Results` folder contains output file named ESA-Model-Aug-Full-Results.xlsx.
 This Excel file is structured into three key sheets:
 
 ### 1. **Model Training Size Results**
-This sheet contains the results of model performance across varying training sizes, helping to evaluate how much training data is required for the models to perform effectively. It typically records performance metrics for different training sizes across multiple iterations of model training and testing.
+This sheet contains the results of model performance across varying training sizes, helping to evaluate how much training data is required for the models to perform effectively. It typically records performance metrics for different training sizes across multiple iterations of model training and testing, as depicted in Figure 5 of the Manuscript.
 
 #### Key Columns:
 - **Training Size**: The proportion of the dataset used for training (e.g., 10%, 20%, 50%, 90%).
@@ -92,8 +101,8 @@ This sheet contains the results of model performance across varying training siz
 - **Test MAE**: Mean absolute error on the test set, which reflects the average difference between predicted and actual values.
 - **Test RMSE**: Root mean squared error on the test set, a measure of prediction accuracy that accounts for large errors.
 
-### 2. **Opt Model Results - Cat Type**
-This sheet summarizes the **optimized model results** for different catalyst types (`Cat Type`) using the optimized RF algorithm. The models have been trained using the optimal hyperparameters identified through a search process (e.g., using `RandomizedSearchCV`), and the results are segmented by catalyst structure.
+### 2. **Opt RF/GB Model Results - Cat Type**
+This sheet summarizes the **optimized model results** for different catalyst types (`Cat Type`) using the optimized RF algorithm. The models have been trained using the optimal hyperparameters identified through a search process (e.g., using `RandomizedSearchCV`), and the results are segmented by catalyst structure. The ‘Cat_Structure’ column indicates what types of target catalysts are predicted. ‘Cat_Structure = All’ column presents the individual results for the Table 1 of the manuscript.
 
 #### Key Columns:
 - **Catalyst Type**: The specific catalyst structure used in the reaction (e.g., VO(acac)2, VOSO4).
@@ -102,8 +111,8 @@ This sheet summarizes the **optimized model results** for different catalyst typ
 - **Test MAE**: Mean absolute error on the test set for each catalyst type.
 - **Test RMSE**: Root mean squared error on the test set, reflecting the overall prediction error for each catalyst type.
 
-### 3. **Feature Importance Opt Model**
-This sheet provides an analysis of **feature importance** for the optimized models. Feature importance refers to the relative contribution of each feature (e.g., molecular descriptors, reaction conditions) to the model's predictions. The higher the importance score, the more significant that feature is in driving the model’s predictions.
+### 3. **Feature Importance RF/GGB Opt Model**
+This sheet provides an analysis of **feature importance** for the optimized models. Feature importance refers to the relative contribution of each feature (e.g., molecular descriptors, reaction conditions) to the model's predictions. The higher the importance score, the more significant that feature is in driving the model’s predictions. This data is presented in Figure 11 of the manuscript.
 
 #### Key Columns:
 - **Feature**: The name of the feature or descriptor used in the model (e.g., molecular descriptors like molecular weight, bond count, or reaction conditions like temperature, solvent type).
@@ -112,5 +121,10 @@ This sheet provides an analysis of **feature importance** for the optimized mode
 - **VO(acac)2, VO(OiPr)3, VCl2(salen), VO(salen), VOSO4**: These columns represent the **feature importance scores** for each feature as they relate to the specific catalyst types. The scores indicate how influential each feature is for the model’s predictions for each particular catalyst.
 - **All**: This column shows the **overall feature importance** across all catalysts, combining the importance scores into a general metric to represent the feature’s contribution to the model’s performance for the entire dataset.
 
----
+### 4. **Top 15 FI Score**
+This sheet includes ML model epoxidation yield prediction performance with optimized RF algorithm, using only the top 15 descriptors form Feature Importance of the optimized RF algorithm using all descriptors with the 'All Catalysts' scenario. Results are considered for all catalysts in bulk.
 
+### 5. **RF Opt - DA Weight Test**
+Displays error metrics for ESA yield prediction with varying synthetic data weights and variation of test R2 scores for ESA yield prediction with RF algorithm with different synthetic data weights. Figure 10 of the manuscript presents two charts for results visualization.
+
+---

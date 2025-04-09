@@ -3,7 +3,7 @@ Repository for the article "Optimizing Vanadium-Catalyzed ESA Reactions: Machine
 
 This repository contains Python scripts used for optimizing machine learning models in the ESA reaction dataset. The scripts are designed for various stages of model training, hyperparameter tuning, data augmentation, and result evaluation. Below is an explanation of the key scripts and their roles.
 
-<img width="506" alt="image" src="https://github.com/user-attachments/assets/92ba2678-94fa-42d2-8914-2da17c5ad7df" />
+<img width="506" alt="image" src="https://github.com/user-attachments/assets/92ba2678-94fa-42d2-8914-2da17c5ad7df" /> 
 
 
 ## Scripts Overview

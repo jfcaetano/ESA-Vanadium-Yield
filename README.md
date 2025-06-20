@@ -1,5 +1,7 @@
 # ESA-Vanadium-Yield
 Repository for the article "Optimizing Vanadium-Catalyzed ESA Reactions: Machine Learning-Driven Yield Predictions and Data Augmentation"
+Journal of Chemical Information and Modeling, 2025
+DOI: 10.1021/acs.jcim.5c01104
 
 This repository contains Python scripts used for optimizing machine learning models in the ESA reaction dataset. The scripts are designed for various stages of model training, hyperparameter tuning, data augmentation, and result evaluation. Below is an explanation of the key scripts and their roles.
 
